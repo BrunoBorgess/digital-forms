@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+
+/* Animação de entrada */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 1s forwards;
+}
+
+/* Animação de saída */
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slideOut {
+  animation: slideOut 0.8s forwards;
+}
+
+/* Delays para animação em sequência */
+.delay-0 { animation-delay: 0s; }
+.delay-75 { animation-delay: 0.075s; }
+.delay-150 { animation-delay: 0.15s; }
+.delay-250 { animation-delay: 0.25s; }
+.delay-350 { animation-delay: 0.35s; }
+.delay-450 { animation-delay: 0.45s; }
+.delay-550 { animation-delay: 0.55s; }
