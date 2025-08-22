@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // <-- import motion
-import logo from "../../assets/bpf-ofc.png";
+import { motion } from "framer-motion";
 import digitallogo from "../../assets/digitallogo.png";
 
 function Header() {
@@ -16,120 +15,95 @@ function Header() {
     }, 800);
   }
 
-  // Variants para animação dos links
   const linkVariants = {
     initial: { opacity: 0, y: -10 },
     animate: { opacity: 1, y: 0 },
-    hover: { scale: 1.1 }
+    hover: { scale: 1.05 }
   };
 
   return (
-    <header className="bg-[#01579b] text-white py-6 relative z-50">
+    <header className="bg-[#111] text-white py-4 relative z-50 shadow-lg shadow-gray-700/40">
       {/* Menu desktop */}
-      <nav className='hidden md:flex justify-between items-center h-15 p-4 bg-[#01579b] text-white'>
+      <nav className='hidden md:flex justify-between items-center h-16 px-6'>
         {/* LOGO ANIMADA */}
         <motion.img 
           src={digitallogo} 
           alt="digitalLogo" 
-          className="object-contain w-[150px] mr-[35px]"
+          className="object-contain w-[160px]"
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          whileHover={{ scale: 1.1, rotate: 2 }}
+          whileHover={{ scale: 1.05, rotate: 1 }}
         />
 
-        <ul className="flex gap-15 pr-20 font-bold ">
-          <motion.li
-            variants={linkVariants}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            whileHover={{ scale: 1.1, rotate: 2 }}
-          >
-            <Link to="/" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Quem Somos</Link>
-          </motion.li>
-          <motion.li
-            variants={linkVariants}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            whileHover={{ scale: 1.1, rotate: 2 }}
-          >
-            <Link to="/Sistema" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Sistemas</Link>
-          </motion.li>
-          <motion.li
-            variants={linkVariants}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            whileHover={{ scale: 1.1, rotate: 2 }}
-          >
-            <Link to="/Integracao" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Integração</Link>
-          </motion.li>
-          <motion.li
-            variants={linkVariants}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            whileHover={{ scale: 1.1, rotate: 2 }}
-          >
-            <Link to="/Parceiros" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Parceiros</Link>
-          </motion.li>
-          <motion.li
-            variants={linkVariants}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            whileHover={{ scale: 1.1, rotate: 2 }}
-          >
-            <Link to="/Contato" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Contato</Link>
-          </motion.li>
+        <ul className="flex gap-10 font-semibold">
+          {["Quem Somos","Sistemas","Integração","Parceiros","Contato"].map((item,index) => (
+            <motion.li
+              key={index}
+              variants={linkVariants}
+              initial="initial"
+              animate="animate"
+              whileHover={{ scale: 1.05, textShadow: "0 0 6px #999" }}
+              transition={{ duration: 0.5 + index*0.1 }}
+            >
+              <Link 
+                to={item === "Quem Somos" ? "/" : `/${item.replace("ç","c").replace(" ","")}`} 
+                className="text-white hover:text-gray-400 transition-colors duration-300"
+              >
+                {item}
+              </Link>
+            </motion.li>
+          ))}
         </ul>
       </nav>
 
       {/* Botão hamburger mobile */}
-      <div className="relative flex md:hidden justify-between items-center p-4  text-white py-1">
+      <div className="relative flex md:hidden justify-between items-center px-6 py-3">
         <button
-          onClick={() => {
-            if (menuOpen) {
-              handleCloseMenu();  // Fechar o menu com animação suave
-            } else {
-              setMenuOpen(true);  // Abrir o menu
-            }
-          }}
-          className="text-2xl font-bold cursor-pointer hover:text-gray-400 transition-colors duration-500"
+          onClick={() => menuOpen ? handleCloseMenu() : setMenuOpen(true)}
+          className="text-2xl font-bold cursor-pointer hover:text-gray-400 transition-colors duration-300"
         >
           ☰
         </button>
-        <img 
+        <motion.img 
           src={digitallogo} 
           alt="Logo" 
-          className="absolute left-1/2 -translate-x-1/2 w-[150px] mr-[35px]"
+          className="absolute left-1/2 -translate-x-1/2 w-[140px]"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2 }}
         />
       </div>
 
       {/* Menu Mobile flutuante */}
       {menuOpen && (
-        <ul className={`md:hidden absolute top-full left-0 w-full bg-[#01579b80] p-4 flex flex-col gap-4 z-50 ${closing ? 'animate-slideOut' : 'animate-slideIn'} text-center`}>
-          <li className="transform transition duration-300 ease-out opacity-0 translate-y-[10px] animate-slideIn delay-150">
-            <Link to="/" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer" onClick={handleCloseMenu}>Quem Somos</Link>
-          </li>
-          <li className="transform transition duration-300 ease-out opacity-0 translate-y-[10px] animate-slideIn delay-250">
-            <Link to="/Sistema" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer" onClick={handleCloseMenu}>Sistema</Link>
-          </li>
-          <li className="transform transition duration-300 ease-out opacity-0 translate-y-[10px] animate-slideIn delay-350">
-            <Link to="/Integracao" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer" onClick={handleCloseMenu}>Integração</Link>
-          </li>
-          <li className="transform transition duration-300 ease-out opacity-0 translate-y-[10px] animate-slideIn delay-450">
-            <Link to="/Parceiros" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer" onClick={handleCloseMenu}>Parceiros</Link>
-          </li>
-          <li className="transform transition duration-300 ease-out opacity-0 translate-y-[10px] animate-slideIn delay-550">
-            <Link to="/Contato" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer" onClick={handleCloseMenu}>Contato</Link>
-          </li>
-        </ul>
+        <motion.ul 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className={`md:hidden absolute top-full left-0 w-full bg-[#111]/90 backdrop-blur-md p-4 flex flex-col gap-4 z-50 rounded-b-lg shadow-lg`}
+        >
+          {["Quem Somos","Sistemas","Integração","Parceiros","Contato"].map((item,index) => (
+            <motion.li
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: index*0.1 }}
+            >
+              <Link 
+                to={item === "Quem Somos" ? "/" : `/${item.replace("ç","c").replace(" ","")}`} 
+                className="text-white hover:text-gray-400 text-center font-semibold block py-2 transition-colors duration-300"
+                onClick={handleCloseMenu}
+              >
+                {item}
+              </Link>
+            </motion.li>
+          ))}
+        </motion.ul>
       )}
     </header>
   );
 }
 
 export default Header;
+
