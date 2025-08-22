@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // <-- import motion
 import logo from "../../assets/bpf-ofc.png";
 import digitallogo from "../../assets/digitallogo.png";
-
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false); 
@@ -16,17 +16,74 @@ function Header() {
     }, 800);
   }
 
+  // Variants para animação dos links
+  const linkVariants = {
+    initial: { opacity: 0, y: -10 },
+    animate: { opacity: 1, y: 0 },
+    hover: { scale: 1.1 }
+  };
+
   return (
     <header className="bg-[#01579b] text-white py-6 relative z-50">
       {/* Menu desktop */}
       <nav className='hidden md:flex justify-between items-center h-15 p-4 bg-[#01579b] text-white'>
-        <img src={digitallogo} alt="digitalLogo" className=" object-contain w-[150px] mr-[35px]" />
+        {/* LOGO ANIMADA */}
+        <motion.img 
+          src={digitallogo} 
+          alt="digitalLogo" 
+          className="object-contain w-[150px] mr-[35px]"
+          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          whileHover={{ scale: 1.1, rotate: 2 }}
+        />
+
         <ul className="flex gap-15 pr-20 font-bold ">
-          <li><Link to="/" className=" text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Quem Somos</Link></li>
-          <li><Link to="/Sistema" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Sistemas</Link></li>
-          <li><Link to="/Integracao" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Integração</Link></li>
-          <li><Link to="/Parceiros" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Parceiros</Link></li>
-          <li><Link to="/Contato" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Contato</Link></li>
+          <motion.li
+            variants={linkVariants}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.1, rotate: 2 }}
+          >
+            <Link to="/" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Quem Somos</Link>
+          </motion.li>
+          <motion.li
+            variants={linkVariants}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.1, rotate: 2 }}
+          >
+            <Link to="/Sistema" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Sistemas</Link>
+          </motion.li>
+          <motion.li
+            variants={linkVariants}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.1, rotate: 2 }}
+          >
+            <Link to="/Integracao" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Integração</Link>
+          </motion.li>
+          <motion.li
+            variants={linkVariants}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.1, rotate: 2 }}
+          >
+            <Link to="/Parceiros" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Parceiros</Link>
+          </motion.li>
+          <motion.li
+            variants={linkVariants}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.1, rotate: 2 }}
+          >
+            <Link to="/Contato" className="text-amber-50 hover:text-gray-400 transition-colors duration-500 cursor-pointer">Contato</Link>
+          </motion.li>
         </ul>
       </nav>
 
@@ -45,11 +102,10 @@ function Header() {
           ☰
         </button>
         <img 
-        src={digitallogo} 
-        alt="Logo" 
-        className="absolute left-1/2 -translate-x-1/2 w-[150px] mr-[35px]"
+          src={digitallogo} 
+          alt="Logo" 
+          className="absolute left-1/2 -translate-x-1/2 w-[150px] mr-[35px]"
         />
-
       </div>
 
       {/* Menu Mobile flutuante */}
