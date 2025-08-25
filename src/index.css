@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
 @import "tailwindcss";
+
 
 
 /* Animação de entrada */
@@ -28,6 +30,11 @@
     transform: translateY(-10px);
   }
 }
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 
 .animate-slideOut {
   animation: slideOut 0.8s forwards;

@@ -22,7 +22,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-[#111] text-white py-4 relative z-50 shadow-lg shadow-gray-700/40">
+    <header className="bg-[#0a0a0a] text-white py-4 relative z-50 shadow-lg shadow-gray-700/40">
       {/* Menu desktop */}
       <nav className='hidden md:flex justify-between items-center h-16 px-6'>
         {/* LOGO ANIMADA */}

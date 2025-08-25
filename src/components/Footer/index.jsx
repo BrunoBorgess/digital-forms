@@ -1,22 +1,23 @@
 import { Link } from "react-router-dom";
+import { FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-[#111] text-white w-full mt-20 shadow-inner shadow-gray-700/20">
+    <footer className="bg-[#0a0a0a] text-white w-full shadow-inner shadow-gray-700/20">
       <div className="flex flex-col items-center justify-center text-justify leading-relaxed px-6 py-12 max-w-7xl mx-auto">
-        
-        <h1 className="font-extrabold m-4 text-2xl md:text-3xl 
-          bg-gradient-to-r from-gray-500 via-gray-400 to-gray-600
-          bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-        >
+
+        {/* Título */}
+        <h1 className="font-extrabold m-4 text-2xl md:text-3xl text-gray-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
           Digital Forms © 2025
         </h1>
 
-        <p className="text-lg md:text-2xl mb-8 text-gray-300 drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]">
+        {/* Descrição */}
+        <p className="text-lg md:text-2xl mb-8 text-gray-300 drop-shadow-[0_0_4px_rgba(0,0,0,0.6)] text-center max-w-4xl">
           BPF Digital Forms é um modelo de SaaS (Software As A Service), ou seja, você não precisa instalar nada em sua máquina. Basta ter conexão com a internet e acessar pelo navegador ou aplicativo. A plataforma substitui o uso de papel, evita erros e mantém sua equipe alinhada em tempo real. Para planos de assinatura, consulte nosso departamento comercial utilizando o formulário ao lado.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-8">
+        {/* Links principais */}
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6">
           <p className="flex-1 min-w-[120px] text-center text-xs md:text-lg text-gray-400">
             ©Todos os direitos reservados
           </p>
@@ -38,6 +39,35 @@ function Footer() {
           </a>
         </div>
 
+        {/* Ícones de redes sociais */}
+        <div className="flex gap-4 mb-8">
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-blue-500 transition transform hover:scale-110 text-xl md:text-2xl"
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-pink-500 transition transform hover:scale-110 text-xl md:text-2xl"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-blue-600 transition transform hover:scale-110 text-xl md:text-2xl"
+          >
+            <FaFacebook />
+          </a>
+        </div>
+
+        {/* Linha final */}
         <h1 className="text-center font-semibold py-4 m-4 md:text-2xl text-gray-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.3)]">
           © 2025 Digital Forms. Todos os direitos reservados.
         </h1>
