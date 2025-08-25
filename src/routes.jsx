@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import Contato from './pages/Contato';
 import Header from './components/Header';
 import Sistema from './pages/Sistema';
-import Integracao from './pages/integracao';
+import Integracao from './pages/Integracao';
 import Parceiros from './pages/Parceiros';
 import Footer from './components/Footer';
 

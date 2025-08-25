@@ -26,13 +26,15 @@ import ifms from "../../assets/ifms.avif";
 import living from "../../assets/living.avif";
 import anatel from "../../assets/anatel.avif";
 import inmetro from "../../assets/inmetro.avif";
-
+import sebraeEvento from "../../assets/sebrae2.jpeg";
 import { BarChart, CheckCircle, Shield, Zap } from "lucide-react";
 import { MdComputer } from "react-icons/md";
 
 function Home() {
-  const slides = [Banner, Banner2, Banner3, bpfLogo];
+  const slides = [Banner, Banner2, Banner3];
   const slides2 = [industria2, agro, comercio, seguranca];
+  const [showEvento, setShowEvento] = useState(true);
+
 
   const openModal = (cardData) => {
   setSelectedCard(cardData);
@@ -169,6 +171,7 @@ function Home() {
       </div>
 
 
+
       {/* Seção Intermediária */}
       <div
         className="relative w-full h-[500px] bg-cover bg-center flex items-center px-10"
@@ -201,6 +204,78 @@ function Home() {
           
         </div>
         
+     {/*  Bloco do evento no topo - remover após fim do evento  */}
+      <AnimatePresence>
+        {showEvento && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.section
+              className="relative w-full max-w-3xl bg-gradient-to-r from-green-400 via-blue-500 to-green-400 text-white rounded-3xl shadow-2xl p-8 flex flex-col items-center"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.h1
+                className="text-4xl md:text-5xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white"
+                initial={{ y: -30 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                 Presença confirmada no Sebrae Startup Summit 2025
+              </motion.h1>
+
+              <motion.p
+                className="text-lg md:text-xl text-center mb-6"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                Agente uma reunião e teste nosso produto no evento!
+              </motion.p>
+
+              <motion.img
+                src={sebraeEvento}
+                alt="Sebrae Empretec Fest 2025"
+                className="w-full rounded-2xl shadow-xl mb-6"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              />
+
+              <motion.button
+                onClick={() => openModal({
+                  title: "Agendar Reunião",
+                  details: (
+                    <div className="flex flex-col items-center gap-4">
+                    </div>
+                  ),
+                })}
+                className="px-6 py-3 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:scale-105 transition-transform mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                Agendar Reunião e Garantir Teste
+              </motion.button>
+
+
+              <button
+                onClick={() => setShowEvento(false)}
+                className="mt-2 text-white/80 hover:text-white font-semibold"
+              >
+                Fechar
+              </button>
+            </motion.section>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       </div>
 
       {/* Divider animado baixo*/}
@@ -469,11 +544,57 @@ function Home() {
           </div>
         </div>
 
+        {/* Destaque Sebrae Empretec Fest 2025 */}
+        <motion.div
+          className="w-full relative flex flex-col items-center justify-center py-16 bg-[#111]"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <h2 className="text-4xl md:text-6xl font-bold text-center 
+            bg-gradient-to-r from-green-400 via-blue-500 to-green-400 
+            bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,255,170,0.6)] mb-8">
+            Presença confirmada no Sebrae Startup Summit 2025
+          </h2>
+
+          <motion.img
+            src={sebraeEvento} // 📌 Imagem JPEG importada
+            alt="Sebrae Empretec Fest 2025"
+            className="max-w-4xl w-full rounded-2xl shadow-2xl mb-8"
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+          />
+
+          {/* Botão de agendamento - abre o modal */}
+          <motion.button
+            onClick={() => openModal({
+              title: "Agendar Reunião",
+              details: (
+                <div className="flex flex-col items-center gap-4">
+                  <p className="text-white text-lg text-center">
+                    Garanta seu teste do produto no Sebrae Empretec Fest 2025.
+                  </p>
+                </div>
+              )
+            })}
+            className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 
+              text-white text-lg font-semibold rounded-xl shadow-lg hover:scale-105 
+              transition-transform duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            Agendar Reunião e Garantir o Teste do Produto
+          </motion.button>
+        </motion.div>
 
 
 
 
-        {/* Modal Saiba Mais - ao clicar no botão saiba mais do card digital forms e bpf digital */}
+
+        {/* Sessão formulário modal*/}
         <AnimatePresence>
           {selectedCard && (
             <motion.div
