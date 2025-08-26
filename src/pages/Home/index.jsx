@@ -236,7 +236,7 @@ function Home() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Agende reunião e teste nosso produto
+                Agende uma reunião e teste nossa solução na sua empresa sem custos
               </motion.p>
 
               <motion.img
@@ -256,18 +256,18 @@ function Home() {
                     </div>
                   ),
                 })}
-                className="px-6 py-3 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:scale-105 transition-transform mb-4"
+                className="px-6 py-3 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:scale-105 transition-transform mb-4 cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                Agendar Reunião e Garantir Teste
+                Agendar Reunião 
               </motion.button>
 
 
               <button
                 onClick={() => setShowEvento(false)}
-                className="mt-2 text-white/80 hover:text-white font-semibold"
+                className="mt-2 text-white/80 hover:text-white font-semibold cursor-pointer"
               >
                 Fechar
               </button>
@@ -586,7 +586,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Agende reunião e teste nosso produto
+            Agendar reunião e teste nosso produto
           </motion.button>
         </motion.div>
 
