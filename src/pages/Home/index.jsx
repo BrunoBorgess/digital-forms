@@ -187,9 +187,9 @@ function Home() {
             Digital Forms é uma plataforma SaaS que transforma a forma como você gerencia documentos e processos.
           </p>
           <button 
-            className="px-8 py-3 rounded-lg text-white font-semibold 
-              bg-[rgb(0,255,170)] shadow-[0_0_15px_rgb(0,255,170),0_0_30px_rgb(0,255,170)] 
-              hover:scale-105 transition-transform duration-300"
+            className="px-8 py-4 rounded-lg text-white font-semibold 
+              bg-[rgb(0,255,170)] shadow-[0_0_2px_rgb(0,255,170),0_0_10px_rgb(0,255,170)] 
+              hover:scale-105 transition-transform duration-300 cursor-pointer"
             onClick={() => openModal({
                   title: "Agendar Reunião",
                   details: (
@@ -581,7 +581,7 @@ function Home() {
             })}
             className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 
               text-white text-lg font-semibold rounded-xl shadow-lg hover:scale-105 
-              transition-transform duration-300"
+              transition-transform duration-300 cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -838,9 +838,9 @@ function Home() {
             A migração para o digital melhora processos e organização da empresa, tornando o dia a dia mais prático e seguro. Permite anexar documentos e imagens, como notas fiscais e registros fotográficos, otimizando controle e rastreabilidade, e facilita fiscalização e auditoria com acesso rápido e confiável às informações.
           </p>
           <button 
-            className="px-8 py-3 rounded-lg text-white font-semibold 
-              bg-[rgb(0,255,170)] shadow-[0_0_15px_rgb(0,255,170),0_0_30px_rgb(0,255,170)] 
-              hover:scale-105 transition-transform duration-300"
+            className="px-8 py-4 rounded-lg text-white font-semibold 
+              bg-[rgb(0,255,170)] shadow-[0_0_2px_rgb(0,255,170),0_0_10px_rgb(0,255,170)] 
+              hover:scale-105 transition-transform duration-300 cursor-pointer"
             onClick={() => openModal({
                   title: "Agendar Reunião",
                   details: (
@@ -892,7 +892,7 @@ function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          boxShadow: "0 0 15px rgb(0,255,170), 0 0 30px rgb(0,255,170)",
+          boxShadow: "0 0 2px rgb(0,255,170), 0 0 10px rgb(0,255,170)",
           cursor: "pointer",
         }}
       >
