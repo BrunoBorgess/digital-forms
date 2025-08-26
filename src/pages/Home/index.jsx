@@ -586,7 +586,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Agendar reunião e teste nosso produto
+            Agendar reunião e testar nosso produto
           </motion.button>
         </motion.div>
 
