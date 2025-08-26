@@ -236,7 +236,7 @@ function Home() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Agente uma reunião e teste nosso produto no evento!
+                Agende reunião e teste nosso produto
               </motion.p>
 
               <motion.img
@@ -586,7 +586,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Agendar Reunião e Garantir o Teste do Produto
+            Agende reunião e teste nosso produto
           </motion.button>
         </motion.div>
 
