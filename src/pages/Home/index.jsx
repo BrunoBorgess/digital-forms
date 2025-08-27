@@ -105,7 +105,7 @@ function Home() {
       };
 
       try {
-        const res = await fetch("http://192.168.15.2:5000/agendar", {
+        const res = await fetch("/api/agendar", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(dados),
