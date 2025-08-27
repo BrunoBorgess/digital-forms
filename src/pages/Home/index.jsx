@@ -989,7 +989,7 @@ function Home() {
 
       {/* Ícone flutuante WhatsApp neon */}
       <motion.a
-        href="https://wa.me/5511999999999"
+        href="https://wa.me/5567981775552"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-40 mb-3
