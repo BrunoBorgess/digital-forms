@@ -1,13 +1,7 @@
 import { useState } from "react";
-import { BsCalendar, BsClockHistory} from "react-icons/bs";
+import { BsCalendar, BsClockHistory } from "react-icons/bs";
 
-
-
-function Calendario() {
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-
-  // Horários pré-definidos
+function Calendario({ selectedDate, setSelectedDate, selectedTime, setSelectedTime }) {
   const availableTimes = ["09:00", "11:00", "14:00", "16:00"];
 
   return (
@@ -51,3 +45,4 @@ function Calendario() {
 }
 
 export default Calendario;
+

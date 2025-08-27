@@ -30,10 +30,109 @@ import sebraeEvento from "../../assets/sebrae2.jpeg";
 import { BarChart, CheckCircle, Shield, Zap } from "lucide-react";
 import { MdComputer } from "react-icons/md";
 
+
 function Home() {
   const slides = [Banner, Banner2, Banner3];
   const slides2 = [industria2, agro, comercio, seguranca];
   const [showEvento, setShowEvento] = useState(true);
+
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [empresa, setEmpresa] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [produto, setProduto] = useState("");
+  const [arquivo, setArquivo] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+
+
+  const showCustomAlert = (message) => {
+    setAlertMessage(message);
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000); // desaparece em 3s
+  };
+
+
+  {/* TESTE DA AGENDA, APAGAR SE NÃO FOR RÁPIDO  */}
+  const handleAgendar = async () => {
+    // validação antes de enviar
+    if (!nome || !email || !telefone || !empresa || !cpf || !cargo || !produto || !selectedDate || !selectedTime) {
+      alert("Por favor, preencha todos os campos obrigatórios.");
+      return;
+      }
+
+      // validação de e-mail
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Por favor, digite um email válido.");
+        return;
+      }
+
+      // validação de CPF/CNPJ
+      const cpfCnpjMaxLength = 14; // CPF 11 dígitos, CNPJ 14 dígitos
+      const cpfCnpjOnlyNumbers = cpf.replace(/\D/g, ""); // remove tudo que não é número
+      if (cpfCnpjOnlyNumbers.length > cpfCnpjMaxLength) {
+        alert("CPF ou CNPJ inválido. Máximo de 14 números.");
+        return;
+      }
+
+      // validação de telefone (apenas números)
+      const telefoneOnlyNumbers = telefone.replace(/\D/g, "");
+      if (telefoneOnlyNumbers.length === 0) {
+        alert("Digite um telefone válido apenas com números.");
+        return;
+      }
+        
+      let arquivoBase64 = null;
+      if (arquivo) {
+        arquivoBase64 = await fileToBase64(arquivo);
+      }
+        
+
+      const dados = {
+        name: nome,
+        email: email,
+        whatsapp: telefone,
+        empresa: empresa,
+        cpf: cpf,
+        cargo: cargo,
+        produto: produto,
+        date: selectedDate,
+        time: selectedTime,
+        arquivo: arquivoBase64,
+      };
+
+      try {
+        const res = await fetch("http://192.168.15.2:5000/agendar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dados),
+        });
+
+        const data = await res.json();
+        alert(data.message);
+      } catch (err) {
+        console.error(err);
+        alert("Erro ao agendar");
+      }
+    };
+
+  
+
+  {/* Constante para base 64, temporária até refatorar */}
+  const fileToBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        // remove o prefixo "data:*/*;base64,"
+        const base64String = reader.result.split(",")[1];
+        resolve({ name: file.name, data: base64String });
+      };
+      reader.onerror = (error) => reject(error);
+    });
 
 
   const openModal = (cardData) => {
@@ -97,6 +196,7 @@ function Home() {
     },
   ];
 
+  
 
 
   useEffect(() => {
@@ -591,8 +691,7 @@ function Home() {
         </motion.div>
 
 
-
-
+        
 
         {/* Sessão formulário modal*/}
         <AnimatePresence>
@@ -618,7 +717,12 @@ function Home() {
                   <p className="text-gray-300">
                     Agende uma reunião para falar com nossos especialistas e obtenha uma <strong>demonstração</strong> dos nossos sistemas.
                   </p>
-                  <Calendario />
+                  <Calendario 
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                    selectedTime={selectedTime}
+                    setSelectedTime={setSelectedTime}
+                    />
 
                   <div className="hidden md:flex flex-col gap-2 mt-2">
                     {/* Ícone de câmera + texto */}
@@ -643,14 +747,24 @@ function Home() {
 
                 {/* Lado direito: formulário */}
                 <div className="flex-1 flex flex-col gap-4 overflow-auto">
-                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Digite seu nome" />
-                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Digite seu email" />
-                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Telefone/WhatsApp" />
-                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Nome da empresa" />
-                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="CPF/CNPJ" />
+                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Digite seu nome" 
+                  onChange={(e) => setNome(e.target.value)}
+                  />
+                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Digite seu email" 
+                  onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Telefone/WhatsApp" 
+                  onChange={(e) => setTelefone(e.target.value)}
+                  />
+                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="Nome da empresa" 
+                  onChange={(e) => setEmpresa(e.target.value)}
+                  />
+                  <input className="w-full p-2 bg-gray-800 text-white rounded-lg" placeholder="CPF/CNPJ" 
+                  onChange={(e) => setCpf(e.target.value)}
+                  />
 
-                  <select className="w-full bg-gray-800 text-white rounded-lg p-2">
-                    <option value="" disabled selected>Cargo/Função</option>
+                  <select className="w-full bg-gray-800 text-white rounded-lg p-2" value={cargo} onChange={(e) => setCargo(e.target.value)}>
+                    <option value="" disabled>Cargo/Função</option>
                     <option value="diretor">Diretor</option>
                     <option value="gerente">Gerente</option>
                     <option value="engenheiro">Engenheiro</option>
@@ -659,8 +773,8 @@ function Home() {
                     <option value="gestor">Gestor</option>
                   </select>
 
-                  <select className="w-full bg-gray-800 text-white rounded-lg p-2">
-                    <option value="" disabled selected>Selecione o produto</option>
+                  <select className="w-full bg-gray-800 text-white rounded-lg p-2" value={produto} onChange={(e) => setProduto(e.target.value)}>
+                    <option value="" disabled>Selecione o produto</option>
                     <option value="digital forms">Digital Forms</option>
                     <option value="bpf digital">BPF Digital</option>
                   </select>
@@ -670,6 +784,7 @@ function Home() {
                     <input
                       type="file"
                       className="w-full p-2 bg-gray-800 text-white rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-600 file:text-white hover:file:bg-green-500"
+                      onChange={(e) => setArquivo(e.target.files[0])} 
                     />
                   </div>
 
@@ -683,6 +798,7 @@ function Home() {
                     </button>
                     <button
                       className="px-4 py-2 bg-cyan-500 text-white rounded-lg hover:brightness-125 transition"
+                      onClick={handleAgendar}       
                     >
                       Agendar
                     </button>
