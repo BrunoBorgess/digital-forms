@@ -42,28 +42,28 @@ function Footer() {
         {/* Ícones de redes sociais */}
         <div className="flex gap-4 mb-8">
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/company/sbr-prime/posts/?feedView=all"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-blue-500 transition transform hover:scale-110 text-xl md:text-2xl"
           >
-            <FaLinkedin />
+            <FaLinkedin className="h-8 w-8" />
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/sbrprime?utm_source=ig_web_button_share_sheet&igsh=MW5nY2xvN3FkejU2eA=="
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-pink-500 transition transform hover:scale-110 text-xl md:text-2xl"
           >
-            <FaInstagram />
+            <FaInstagram className="h-8 w-8" />
           </a>
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/sbragro/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-blue-600 transition transform hover:scale-110 text-xl md:text-2xl"
           >
-            <FaFacebook />
+            <FaFacebook className="h-8 w-8"/>
           </a>
         </div>
 

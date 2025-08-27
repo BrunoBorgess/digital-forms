@@ -47,7 +47,7 @@ const gerarEmailUsuarioHTML = ({ name, produto, date, time }) => `
     <p>Nosso <strong>Time de Especialistas</strong> entrará em contato em breve para confirmar todos os detalhes e tirar suas dúvidas.</p>
 
     <div style="text-align: center; margin: 25px 0;">
-      <a href="https://wa.me/559999999999" style="background-color: #28a745; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; transition: 0.3s;">
+      <a href="https://wa.me/5567981775552" style="background-color: #28a745; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; transition: 0.3s;">
         Falar com o Time de Especialistas
       </a>
     </div>

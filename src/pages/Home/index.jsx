@@ -305,76 +305,75 @@ function Home() {
         </div>
         
      {/*  Bloco do evento no topo - remover após fim do evento  */}
-      <AnimatePresence>
-        {showEvento && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.section
-              className="relative w-full max-w-3xl bg-gradient-to-r from-green-400 via-blue-500 to-green-400 text-white rounded-3xl shadow-2xl p-8 flex flex-col items-center"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+        <AnimatePresence>
+          {showEvento && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <motion.h1
-                className="text-4xl md:text-5xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white"
-                initial={{ y: -30 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                 Presença confirmada no Sebrae Startup Summit 2025
-              </motion.h1>
-
-              <motion.p
-                className="text-lg md:text-xl text-center mb-6"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-              >
-                Agende uma reunião e teste nossa solução na sua empresa sem custos
-              </motion.p>
-
-              <motion.img
-                src={sebraeEvento}
-                alt="Sebrae Empretec Fest 2025"
-                className="w-full rounded-2xl shadow-xl mb-6"
-                initial={{ scale: 0.9, opacity: 0 }}
+              <motion.section
+                className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-r from-green-400 via-blue-500 to-green-400 text-white rounded-3xl shadow-2xl p-8 flex flex-col items-center"
+                initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-              />
-
-              <motion.button
-                onClick={() => openModal({
-                  title: "Agendar Reunião",
-                  details: (
-                    <div className="flex flex-col items-center gap-4">
-                    </div>
-                  ),
-                })}
-                className="px-6 py-3 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:scale-105 transition-transform mb-4 cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                Agendar Reunião 
-              </motion.button>
+                <motion.h1
+                  className="text-4xl md:text-5xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white"
+                  initial={{ y: -30 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  Presença confirmada no Sebrae Startup Summit 2025
+                </motion.h1>
 
+                <motion.p
+                  className="text-lg md:text-xl text-center mb-6"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                >
+                  Agende uma reunião e teste nossa solução na sua empresa sem custos
+                </motion.p>
 
-              <button
-                onClick={() => setShowEvento(false)}
-                className="mt-2 text-white/80 hover:text-white font-semibold cursor-pointer"
-              >
-                Fechar
-              </button>
-            </motion.section>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                <motion.img
+                  src={sebraeEvento}
+                  alt="Sebrae Empretec Fest 2025"
+                  className="w-full rounded-2xl shadow-xl mb-6"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                />
+
+                <motion.button
+                  onClick={() =>
+                    openModal({
+                      title: "Agendar Reunião",
+                      details: <div className="flex flex-col items-center gap-4"></div>,
+                    })
+                  }
+                  className="px-6 py-3 bg-white text-green-600 font-bold rounded-xl shadow-lg hover:scale-105 transition-transform mb-4 cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                >
+                  Agendar Reunião
+                </motion.button>
+
+                <button
+                  onClick={() => setShowEvento(false)}
+                  className="mt-2 text-white/80 hover:text-white font-semibold cursor-pointer"
+                >
+                  Fechar
+                </button>
+              </motion.section>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
 
       </div>
 
