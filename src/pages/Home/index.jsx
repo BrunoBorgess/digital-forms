@@ -27,12 +27,36 @@ import living from "../../assets/living.avif";
 import anatel from "../../assets/anatel.avif";
 import inmetro from "../../assets/inmetro.avif";
 import sebraeEvento from "../../assets/sebrae2.jpeg";
+import sst2 from "../../assets/sst2.jpg";
 import { BarChart, CheckCircle, Shield, Zap } from "lucide-react";
 import { MdComputer } from "react-icons/md";
 
 
 function Home() {
-  const slides = [Banner, Banner2, Banner3];
+  const slides = [
+    {
+      image: Banner,
+      title: "Gestão de qualide",
+      description: "O fim das multas por documentos perdidos",
+      buttonText: "Realize um teste",
+      link: "/produto1",
+    },
+    {
+      image: sst2,
+      title: "Segurança do trabalho",
+      description: "Em pericias trabalhistas, todos os documentos  estarão prontos na palma da suas mãos",
+      buttonText: " Realize um teste",
+      link: "/produto2",
+    },
+    {
+      image: Banner3,
+      title: "Organização e transparencia",
+      description: "Tenha controle total das boas práticas de fabricão na sua industria",
+      buttonText: "Realize um teste",
+      link: "/produto3",
+    },
+  ];
+
   const slides2 = [industria2, agro, comercio, seguranca];
   const [showEvento, setShowEvento] = useState(true);
 
@@ -227,20 +251,47 @@ function Home() {
       </div>
 
       {/* Slider Principal */}
-      <div className="relative w-full h-[350px] md:h-[300px] lg:h-[400px] overflow-hidden">
+      <div className="relative w-full h-[450px] md:h-[300px] lg:h-[400px] xl:h-[850px] overflow-hidden">
         <div
-          className="flex h-full transition-transform duration-700 ease-in-out"
+          className="flex h-full transition-transform duration-800 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {slides.map((slide, index) => (
-            <img
-              key={index}
-              src={slide}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover flex-shrink-0 brightness-75"
-            />
+            <div key={index} className="relative w-full h-full flex-shrink-0">
+              <img
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover brightness-75"
+              />
+              {/* Overlay de texto + botão */}
+              <div className="absolute bottom-10 left-10 text-white">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">{slide.title}</h2>
+                <p className="mb-4 max-w-xs">{slide.description}</p>
+                <button
+                  className="px-8 py-4 rounded-lg text-white font-semibold 
+                    bg-[rgb(0,150,255)] shadow-[0_0_2px_rgb(0,150,255),0_0_10px_rgb(0,150,255)] 
+                    hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openModal({
+                      title: "Teste Grátis",
+                      details: (
+                        <div className="flex flex-col items-center gap-4">
+                          {/* talvez add descriçaõ*/}
+                        </div>
+                      ),
+                    });
+                  }}
+                >
+                  {slide.buttonText}
+                </button>
+              </div>
+
+            </div>
           ))}
         </div>
+
+        {/* Botões de navegação */}
         <button
           onClick={prevSlide}
           className="absolute left-2 top-1/2 transform -translate-y-1/2 
@@ -254,8 +305,9 @@ function Home() {
           bg-gray-700/70 hover:bg-gray-600 text-white px-3 py-2 rounded-lg shadow-lg"
         >
           {">"}
-        </button>
+        </button> 
       </div>
+
 
       
 
