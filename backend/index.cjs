@@ -130,10 +130,10 @@ app.post("/agendar", async (req, res) => {
     await transporter.sendMail(emailUser);
     await transporter.sendMail(emailTeam);
 
-    res.json({ message: "Emails de confirmação enviados com sucesso!" });
+    res.json({ message: "Agendamento realizado com sucesso! Nossa equipe entrará em contato em breve. Obrigado!" });
   } catch (err) {
     console.error("❌ Erro ao enviar email:", err);
-    res.status(500).json({ message: "Erro ao enviar email" });
+    res.status(500).json({ message: "Erro ao enviar email, tente novamente!" });
   }
 });
 
