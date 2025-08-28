@@ -36,7 +36,7 @@ function Home() {
   const slides = [
     {
       image: Banner,
-      title: "Gestão da qualide",
+      title: "Gestão da qualidade",
       description: "O fim das multas por documentos perdidos",
       buttonText: "Realize um teste",
       link: "/produto1",
