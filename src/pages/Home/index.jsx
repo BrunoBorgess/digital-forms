@@ -425,8 +425,6 @@ function Home() {
             </motion.div>
           )}
         </AnimatePresence>
-
-
       </div>
 
       {/* Divider animado baixo*/}
@@ -478,69 +476,109 @@ function Home() {
 
       {/* Seção Figma Full Width com animação e texto */}
       <motion.div
-        className="relative w-screen overflow-hidden mt-20"
-        initial={{ opacity: 0, y: 80 }}      // começa invisível e levemente abaixo
-        whileInView={{ opacity: 1, y: 0 }}   // anima até posição final
-        transition={{ duration: 5, ease: "easeOut" }} // transição suave
+        className="relative w-screen mt-20 overflow-x-hidden overflow-y-visible"
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 5, ease: 'easeOut' }}
         viewport={{ once: true, amount: 0.3 }}
       >
         <motion.img
           src={figma}
           alt="Seção Figma"
-          className="w-screen max-w-none object-contain"
-          initial={{ opacity: 0, y: 80 }}      // começa invisível e levemente abaixo
-          whileInView={{ opacity: 1, y: 0 }}   // anima até posição final
-          transition={{ duration: 5, ease: "easeOut" }} // transição suave
+          className="w-screen max-w-none object-contain object-left"
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 5, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.3 }}
         />
 
-          {/* Texto no canto superior esquerdo */}
-          <div className="absolute top-20 left-10 max-w-md">
-            <motion.h2
-              className="text-4xl md:text-6xl font-semibold text-white 
-                        bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 
-                        bg-clip-text drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.1}}
-            >
-              solução em suas mãos
-            </motion.h2>
-
-            <motion.p
-               className="mt-4 text-white text-sm sm:text-base md:text-3xl leading-snug max-w-xs sm:max-w-sm md:max-w-md drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              Fichas e documentos da sua empresa centralizados em um único lugar, eliminando riscos de multas por descumprimento de normas, processos ou perda de documentos.
-            </motion.p>
-          </div>
-        </motion.div>
-
-        <motion.h1
-          className="font-nunito text-4xl md:text-6xl font-semibold text-center my-12
-          bg-gradient-to-r from-gray-500 via-gray-400 to-gray-600
-          bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] "
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 3, ease: "easeOut" }}
-          viewport={{ once: true }}
+        {/* Texto no canto superior esquerdo, absoluto e à prova de zoom */}
+        <div
+          className="
+            absolute 
+            top-[clamp(0.5rem,6vw,5rem)]
+            left-[clamp(0.5rem,3vw,3rem)]
+            right-[clamp(0.5rem,4vw,4rem)]
+            max-w-[min(48rem,calc(100vw-2*clamp(0.5rem,4vw,4rem)))]
+            z-10
+            origin-top-left
+            /* escala inteligente em telas minúsculas/zoom extremo */
+            max-[420px]:scale-[0.92]
+            max-[360px]:scale-[0.84]
+            max-[320px]:scale-[0.78]
+          "
+          style={{
+            // respeita áreas seguras (iOS notch, etc.)
+            paddingLeft: 'max(env(safe-area-inset-left, 0px), 0px)',
+            paddingRight: 'max(env(safe-area-inset-right, 0px), 0px)',
+          }}
         >
-          Uma plataforma completa para transformar sua operação em resultados.
-        </motion.h1>
+          <motion.h2
+            className="
+              font-semibold text-white leading-[1.05]
+              bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 
+              bg-clip-text drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]
+              break-words hyphens-auto
+              text-[clamp(1.1rem,4vw,3.5rem)]
+              md:text-[clamp(1.6rem,3vw,4.5rem)]
+              max-[420px]:text-[clamp(1rem,5vw,2rem)]
+              max-[360px]:text-[clamp(0.95rem,5.5vw,1.8rem)]
+            "
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            solução em suas mãos
+          </motion.h2>
 
-        <motion.p
-          className="text-white text-lg text-center font-light md:text-3xl mt-8 drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          Aqui você encontra mais informações sobre boas práticas de fabricação.
-        </motion.p>
+          <motion.p
+            className="
+              mt-3 text-white leading-snug 
+              drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]
+              break-words hyphens-auto
+              text-[clamp(0.9rem,2vw,1.25rem)]
+              md:text-[clamp(1rem,1.8vw,1.75rem)]
+              max-[420px]:text-[clamp(0.85rem,3.8vw,1.05rem)]
+              max-[360px]:text-[clamp(0.8rem,4.2vw,1rem)]
+            "
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, ease: 'easeOut', delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Fichas e documentos da sua empresa centralizados em um único lugar, eliminando riscos de multas por
+            descumprimento de normas, processos ou perda de documentos.
+          </motion.p>
+        </div>
+      </motion.div>
+
+
+
+      <motion.h1
+        className="font-nunito text-3xl md:text-6xl font-semibold text-center my-8
+        bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400
+        bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]
+        leading-snug"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 3, ease: 'easeOut' }}
+        viewport={{ once: true }}
+      >
+        Uma plataforma completa para transformar sua operação em resultados.
+      </motion.h1>
+
+      <motion.p
+        className="text-gray-100 text-base md:text-2xl text-center font-light mt-3
+        drop-shadow-[0_0_6px_rgba(255,255,255,0.5)] max-w-xl mx-auto leading-relaxed"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: 'easeOut', delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        Aqui você encontra mais informações sobre boas práticas de fabricação.
+      </motion.p>
+
 
 
         <motion.p
