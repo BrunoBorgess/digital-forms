@@ -51,7 +51,7 @@ function Home() {
     {
       image: Banner3,
       title: "Organização e transparência",
-      description: "Tenha controle total das boas práticas de fabricão na sua indústria",
+      description: "Tenha controle total das boas práticas de fabricação na sua indústria",
       buttonText: "Realize um teste",
       link: "/produto3",
     },
