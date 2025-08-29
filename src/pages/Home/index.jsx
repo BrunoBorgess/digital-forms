@@ -191,7 +191,7 @@ function Home() {
           />
           <ul className="text-gray-700 list-disc list-inside mb-4">
             <li>Digitalização rápida e segura</li>
-            <li>Organização de documentos eficiente</li>
+            <li>Organização eficiente de documentos</li>
             <li>Compatível com dispositivos móveis</li>
           </ul>
         </div>
@@ -627,7 +627,7 @@ function Home() {
         >
             Voltada exclusivamente para melhor controle e padronização de registros, independentemente da cadeia produtiva.
 
-            Aliada principalmente ao atendimento de Normativas Federais (IN  N°04/2007)  e com foco em melhoria contínua
+            Aliada principalmente ao atendimento de Normativas Federais (IN  N°04/2007)  e com foco em melhoria contínua.
         </motion.p>
 
         {/* Seção de Imagens Flutuantes */}
@@ -679,7 +679,7 @@ function Home() {
           transition={{ duration: 2, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          Soluções reais e eficiêncientes
+          Soluções reais e eficientes
         </motion.h1>
        
 
