@@ -50,8 +50,8 @@ function Home() {
     },
     {
       image: Banner3,
-      title: "Organização e transparencia",
-      description: "Tenha controle total das boas práticas de fabricão na sua industria",
+      title: "Organização e transparência",
+      description: "Tenha controle total das boas práticas de fabricão na sua indústria",
       buttonText: "Realize um teste",
       link: "/produto3",
     },
@@ -529,7 +529,7 @@ function Home() {
             transition={{ duration: 1.5, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            solução em suas mãos
+            Solução em suas mãos
           </motion.h2>
 
           <motion.p
@@ -1040,7 +1040,7 @@ function Home() {
         <div className="relative z-10 max-w-2xl text-white text-center lg:text-right lg:ml-auto">
           <h2 className="text-4xl font-bold mb-4">O digital é a solução</h2>
           <p className="text-lg mb-6">
-            A migração para o digital melhora processos e organização da empresa, tornando o dia a dia mais prático e seguro. Permite anexar documentos e imagens, como notas fiscais e registros fotográficos, otimizando controle e rastreabilidade, e facilita fiscalização e auditoria com acesso rápido e confiável às informações.
+            A migração para o digital aprimora os processos e a organização da empresa, tornando o dia a dia mais ágil e seguro. Possibilita anexar documentos, imagens, notas fiscais, registros fotográficos, otimizando o controle, a rastreabilidade e facilita a fiscalização e auditoria com acesso rápido e confiável às informações.
           </p>
           <button 
             className="px-8 py-4 rounded-lg text-white font-semibold 
